@@ -11,7 +11,7 @@ jest.mock('./page', () => {
     default: function MockPage({ params }: { params: Promise<{ slug: string }> }) {
       return (
         <h1>
-          Slug: Test <p>Sonnguyen</p>
+          Slug: Test <p>Sonn guyen</p>
         </h1>
       );
     }
