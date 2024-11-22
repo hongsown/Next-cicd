@@ -1,17 +1,21 @@
+import { Metadata } from "next";
+
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export async function generateMetadata({ params }: Params) {
-  return { title: `Post: ${params.slug}` };
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const slug = await props.params;
+  return { title: `Post: ${slug.slug}` };
 }
 
-export default function Page({ params }: Params) {
+export default async function Page(props: Params) {
+  const slug = await props.params;
   return (
     <h1>
-      Slug: {params.slug} <p>Sonnguyen</p>
+      Slug: {slug.slug} <p>Sonnguyen</p>
     </h1>
   );
 }
